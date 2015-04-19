@@ -22,10 +22,11 @@ gap.in %>%
 
 # Challenge
 # Calculate the mean population per continent per year for years prior to 1990
-gap.in %>%
+challenge <- gap.in %>%
+    group_by(year, continent) %>%
     filter(year < 1990) %>%
-    group_by(continent) %>%
-    summarize(avg = mean(pop))
+    summarize(avg = mean(pop)) %>%
+    as.data.frame()
 
 # Other random stuff from lesson
 
