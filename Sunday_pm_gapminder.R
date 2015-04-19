@@ -33,6 +33,19 @@ gap.in %>%
     filter(year < 1990) %>%
     summarize(avg = mean(pop)) -> challenge # special dplyr data frame
 
+# Tidy data overview
+# Load 'Iris' dataset, which isn't "tidy"
+attach(iris)
+View(iris)
+
+# Install and load tidyr package
+#install.packages("tidyr", dependencies = TRUE)
+library("tidyr")
+
+# tidying Iris up with tidyr
+iris.long <- gather(iris, "Measurement", "value", 1:4)
+View(iris.long)
+
 # Other random stuff from lesson
 
 for (row.number in 1:10){
