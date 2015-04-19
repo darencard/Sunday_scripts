@@ -12,6 +12,24 @@ gap.in <- read.table("output/combined_gapMinder.tsv",
                      sep = "\t", 
                      header=TRUE)
 
+# Introducing dplyr for piping commands together with data
+
+gap.in %>%
+    filter(pop > 15000000) %>%
+    select(country, year, pop) %>%
+    group_by(country) %>%
+    summarize(min = min(pop))
+
+# Challenge
+# Calculate the mean population per continent per year for years prior to 1990
+gap.in %>%
+    filter(year < 1990) %>%
+    group_by(year) %>%
+    group_by(continent) %>%
+    summarize(avg = mean(pop))
+
+# Other random stuff from lesson
+
 for (row.number in 1:10){
     for (col.number in 1:5){
         print(gap.in[row.number,col.number])
