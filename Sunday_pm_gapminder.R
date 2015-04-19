@@ -26,7 +26,12 @@ challenge <- gap.in %>%
     group_by(year, continent) %>%
     filter(year < 1990) %>%
     summarize(avg = mean(pop)) %>%
-    as.data.frame()
+    as.data.frame() # sets to normal data frame
+
+gap.in %>%
+    group_by(year, continent) %>%
+    filter(year < 1990) %>%
+    summarize(avg = mean(pop)) -> challenge # special dplyr data frame
 
 # Other random stuff from lesson
 
